@@ -1,0 +1,22 @@
+body {
+  margin: 0px;
+  width: 100vw;
+  height: 100vh;
+}
+.light {
+  background-color: darkgrey;
+
+  width: 20rem;
+  margin: 10px;
+  border: 1px solid black;
+  height: 20rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: space-evenly;
+  align-content: space-evenly;
+  flex-wrap: wrap;
+}
