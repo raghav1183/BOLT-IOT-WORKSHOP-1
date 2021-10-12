@@ -1,9 +1,11 @@
 var toggle_state = [false, false, false, false];
 var flash_state = [false, false, false, false];
+var YOUR_API_KEY="YOUR API KEY";//REPLACE WITH YOUR API KEY
+var YOUR_DEVICE_ID="YOUR BOLT MODULE'S DEVICE ID";// REPLACE WITH YOUR BOLT MODULE'S DEVICE ID
 let request = new XMLHttpRequest();
 request.open(
   "GET",
-  "https://cloud.boltiot.com/remote/7b713be9-20da-43cf-a1a5-d74884527f71/serialBegin?deviceName=BOLT8024485&baud=9600"
+  "https://cloud.boltiot.com/remote/"+YOUR_API_KEY+"/serialBegin?deviceName="+YOUR_DEVICE_ID+"&baud=9600"
 );
 request.send();
 request.onload = () => {
@@ -16,7 +18,7 @@ function flash(pin) {
   let request = new XMLHttpRequest();
   request.open(
     "GET",
-    "https://cloud.boltiot.com/remote/7b713be9-20da-43cf-a1a5-d74884527f71/serialWrite?deviceName=BOLT8024485&data=" +
+    "https://cloud.boltiot.com/remote/"+YOUR_API_KEY+"/serialWrite?deviceName="+YOUR_DEVICE_ID+"&data=" +
       pin
   );
   request.send();
@@ -25,12 +27,12 @@ function flash(pin) {
     if (flash_state[array_pin] == true) {
       request.open(
         "GET",
-        "https://cloud.boltiot.com/remote/7b713be9-20da-43cf-a1a5-d74884527f71/serialWrite?deviceName=BOLT8024485&data=F"
+        "https://cloud.boltiot.com/remote/"+YOUR_API_KEY+"/serialWrite?deviceName="+YOUR_DEVICE_ID+"&data=F"
       );
     } else {
       request.open(
         "GET",
-        "https://cloud.boltiot.com/remote/7b713be9-20da-43cf-a1a5-d74884527f71/serialWrite?deviceName=BOLT8024485&data=S"
+        "https://cloud.boltiot.com/remote/"+YOUR_API_KEY+"/serialWrite?deviceName="+YOUR_DEVICE_ID+"&data=S"
       );
     }
     request.send();
@@ -55,7 +57,7 @@ function toggle(pin) {
   let request = new XMLHttpRequest();
   request.open(
     "GET",
-    "https://cloud.boltiot.com/remote/7b713be9-20da-43cf-a1a5-d74884527f71/serialWrite?deviceName=BOLT8024485&data=" +
+    "https://cloud.boltiot.com/remote/"+YOUR_API_KEY+"/serialWrite?deviceName="+YOUR_DEVICE_ID+"&data=" +
       pin
   );
   request.send();
@@ -63,7 +65,7 @@ function toggle(pin) {
     request = new XMLHttpRequest();
     request.open(
       "GET",
-      "https://cloud.boltiot.com/remote/7b713be9-20da-43cf-a1a5-d74884527f71/serialWrite?deviceName=BOLT8024485&data=T"
+      "https://cloud.boltiot.com/remote/"+YOUR_API_KEY+"/serialWrite?deviceName="+YOUR_DEVICE_ID+"&data=T"
     );
     request.send();
     request.onload = () => {
